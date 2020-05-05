@@ -152,8 +152,8 @@ tracking_away = mvel.calc_player_velocities(tracking_away,smoothing=True,filter_
 
 # df of all possible velocities 
 
-possible_player_velx = np.arange(-11.5,11.6,0.5)
-possible_player_vely = np.arange(-11.5,11.6,0.5)
+possible_player_velx = np.arange(-12,12.1,0.5)
+possible_player_vely = np.arange(-12,12.1,0.5)
 
 possible_player_velx_df = pd.DataFrame(data=possible_player_velx, columns=["vx"])
 possible_player_velx_df['dummy'] = 1
@@ -165,7 +165,7 @@ possible_player_vel_df = pd.merge(possible_player_velx_df, possible_player_vely_
 
 possible_player_vel_df['speed'] = np.sqrt( possible_player_vel_df['vy']**2 + possible_player_vel_df['vx']**2 )
 
-possible_player_vel_df = possible_player_vel_df[possible_player_vel_df['speed']<=11.5]
+possible_player_vel_df = possible_player_vel_df[possible_player_vel_df['speed']<12]
 
 
 PPCF_vals = []
@@ -254,7 +254,7 @@ mviz.plot_pitchcontrol_for_event( 821, events,  tracking_home, tracking_away,PPC
 df = [np.sum(p[3]) for p in PPCF_vals]
 df.index(max(df))
 
-# index 464 highest total pitch control, lets take a look at that run
+# index 1776 highest total pitch control, lets take a look at that run
 
 [PPCF_vals[i] for i in [1776]]
 
